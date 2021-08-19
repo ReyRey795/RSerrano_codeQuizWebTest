@@ -1,7 +1,15 @@
 /*CSS variables*/
 :root {
-    background-color:mediumturquoise;
+    background-color:rgb(125, 235, 231);
     font-size: 62.5%;
 
+}
+
+*{
+    box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: navy;
 }
 
