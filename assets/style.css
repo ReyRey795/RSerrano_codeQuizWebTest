@@ -39,7 +39,7 @@ h3{
     font-weight: 500;
 }
 
-/*Utility classes*/
+/*Utility Section*/
 
 .container{
     width: 100vw;
@@ -77,4 +77,31 @@ h3{
 
 .hidden {
     display: none;
+}
+
+/*Button Section*/
+
+.btn {
+    font-size: 1.8rem;
+    padding: 1rem 0;
+    width: 20rem;
+    text-align: center;
+    border: 0.3rem solid rgb(60, 60, 161);
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: rgb(53, 47, 47);
+    background-color: bisque;
+}
+
+.btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 black;
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }
