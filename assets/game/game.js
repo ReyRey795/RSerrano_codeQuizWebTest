@@ -5,7 +5,7 @@ const choices = Array.from(document.getElementsByClassName("choice-text"));
 //Let variables
 
 let currentQuestion = {};
-let acceptingAnswers = true;
+let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
@@ -67,6 +67,7 @@ let questions = [
 const correctBonus = 20;
 const maxQuestions = 5;
 
+//When the game initiates, everything is set to 0
 startGame = () => {
     questionCounter = 0;
     score = 0;
@@ -74,3 +75,37 @@ startGame = () => {
     console.log(availableQuestions);
     getNewQuestion();
 };
+getNewQuestion = () => {
+    
+    //Chooses a random question per the questionIndex
+    questionCounter++;
+    var questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    currentQuestion = availableQuestions[questionIndex];
+    question.innerText = currentQuestion.question;
+
+    //Ensures that the choices correspond with the question above
+    choices.forEach( choice => {
+        var number = choice.dataset['number'];
+        choice.innerText = currentQuestion['choice' + number];
+    });
+
+    //Gets rid of the question we just used
+    availableQuestions.splice(questionIndex, 1);
+
+    acceptingAnswers = true;
+}
+
+//This allows for us to get a reference to which choice they selected.
+choices.forEach(choice => {
+    choice.addEventListener('click', e => {
+        if(!acceptingAnswers) return;
+
+        acceptingAnswers = false;
+        var selectedChoice = e.target;
+        var selectedAnswer = selectedChoice.dataset["number"];
+        getNewQuestion();
+
+    })
+})
+
+startGame();
