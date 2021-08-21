@@ -62,8 +62,9 @@ let questions = [
 ]
 
 //Timer
-
-
+setInterval(function(){
+    $("#dialog" ).dialog();
+});
 
 //Constants
 
@@ -88,6 +89,7 @@ getNewQuestion = () => {
     //Chooses a random question per the questionIndex
     questionCounter++;
 
+    //Displays the number of what question the user is on.
     questionCounterText.innerText = questionCounter + "/" + maxQuestions;
 
     var questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -124,8 +126,10 @@ choices.forEach(choice => {
         if (selectedAnswer == currentQuestion.answer) {
             classToApply = 'correct';
         };
-        console.log(classToApply);
-        
+        if(classToApply === 'correct'){
+            incrementScore(correctBonus);
+        }
+
         selectedChoice.parentElement.classList.add(classToApply);
 
         setTimeout(() => {
@@ -133,6 +137,11 @@ choices.forEach(choice => {
             getNewQuestion();
         }, 1000);    
     })
-})
+});
+
+incrementScore = num => {
+    score += num;
+    scoreText.innerText = score;
+}
 
 startGame();
