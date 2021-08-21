@@ -1,8 +1,8 @@
-/*Creating constant variables. Not planning to re-assign these. Will change later on if needed. */
+//Creating constant variables. Not planning to re-assign these. Will change later on if needed. 
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 
-/*Let variables*/
+//Let variables
 
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -11,7 +11,7 @@ let questionCounter = 0;
 let availableQuestions = [];
 
 let questions = [
-
+    //Array of objects
     {
         question:"Div is a ...?",
         choice1: "element",
@@ -55,6 +55,22 @@ let questions = [
         choice3: "Is a attribute that specifies the type of button",
         choice4: "This allows you to find all HTML elements with the same class name.",
         answer: 1,
-    },
-
+    }
 ]
+
+//Timer
+
+
+
+//Constants
+
+const correctBonus = 20;
+const maxQuestions = 5;
+
+startGame = () => {
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questions];
+    console.log(availableQuestions);
+    getNewQuestion();
+};
