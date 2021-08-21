@@ -76,6 +76,11 @@ startGame = () => {
     getNewQuestion();
 };
 getNewQuestion = () => {
+
+    if(availableQuestions.length === 0 || questionCounter >= maxQuestions){
+        //GO to the end page
+        return window.location.assign('/end.html');
+    }
     
     //Chooses a random question per the questionIndex
     questionCounter++;
@@ -103,8 +108,16 @@ choices.forEach(choice => {
         acceptingAnswers = false;
         var selectedChoice = e.target;
         var selectedAnswer = selectedChoice.dataset["number"];
+    
+        //sets the default to incorrect so that when the answer is selected correctly, the if will cause it to display correct.
+        var classToApply = 'incorrect';
+        if (selectedAnswer == currentQuestion.answer) {
+            classToApply = 'correct';
+        }
+        console.log(classToApply)
+        selectedChoice.parentElement.classList.add(classToApply)
+        selectedChoice.parentElement.classList.remove(classToApply)
         getNewQuestion();
-
     })
 })
 
