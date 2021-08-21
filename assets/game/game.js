@@ -1,6 +1,9 @@
 //Creating constant variables. Not planning to re-assign these. Will change later on if needed. 
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
+const questionCounterText = document.getElementById('questionCounter');
+const scoreText = document.getElementById('score');
+const timerText = document.getElementById('timer');
 
 //Let variables
 
@@ -84,8 +87,13 @@ getNewQuestion = () => {
     
     //Chooses a random question per the questionIndex
     questionCounter++;
+
+    questionCounterText.innerText = questionCounter + "/" + maxQuestions;
+
     var questionIndex = Math.floor(Math.random() * availableQuestions.length);
+
     currentQuestion = availableQuestions[questionIndex];
+
     question.innerText = currentQuestion.question;
 
     //Ensures that the choices correspond with the question above
@@ -106,7 +114,9 @@ choices.forEach(choice => {
         if(!acceptingAnswers) return;
 
         acceptingAnswers = false;
+
         var selectedChoice = e.target;
+
         var selectedAnswer = selectedChoice.dataset["number"];
     
         //sets the default to incorrect so that when the answer is selected correctly, the if will cause it to display correct.
@@ -115,6 +125,7 @@ choices.forEach(choice => {
             classToApply = 'correct';
         };
         console.log(classToApply);
+        
         selectedChoice.parentElement.classList.add(classToApply);
 
         setTimeout(() => {
