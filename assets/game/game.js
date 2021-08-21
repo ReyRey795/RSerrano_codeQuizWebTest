@@ -113,11 +113,14 @@ choices.forEach(choice => {
         var classToApply = 'incorrect';
         if (selectedAnswer == currentQuestion.answer) {
             classToApply = 'correct';
-        }
-        console.log(classToApply)
-        selectedChoice.parentElement.classList.add(classToApply)
-        selectedChoice.parentElement.classList.remove(classToApply)
-        getNewQuestion();
+        };
+        console.log(classToApply);
+        selectedChoice.parentElement.classList.add(classToApply);
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNewQuestion();
+        }, 1000);    
     })
 })
 
