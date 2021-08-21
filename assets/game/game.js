@@ -62,9 +62,22 @@ let questions = [
 ]
 
 //Timer
-setInterval(function(){
-    $("#dialog" ).dialog();
-});
+const startingMinute = 1;
+let time = startingMinute * 60;
+
+const countDownE1 = document.getElementById('timer');
+
+setInterval(updateCountdown, 1000);
+
+function updateCountdown() {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    countDownE1.innerHTML = minutes + seconds;
+    time --;
+
+}
+
 
 //Constants
 
