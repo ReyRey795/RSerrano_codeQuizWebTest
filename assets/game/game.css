@@ -33,3 +33,10 @@
 .incorrect {
     background-color: #dc3545;
 }
+
+/* Heads up display*/
+
+#hud {
+    display: flex;
+    justify-content: space-between
+}
